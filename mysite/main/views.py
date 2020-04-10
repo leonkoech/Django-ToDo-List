@@ -7,7 +7,7 @@ from .forms import CreateListForm
 
 def index(request, id):
 	ls = ToDoList.objects.get(id=id)
-
+	l = ToDoList.objects.all()
 	if request.method == "POST":
 		if request.POST.get("save"):
 			for item in ls.item_set.all():
@@ -23,6 +23,8 @@ def index(request, id):
 
 
 				item.save()
+		elif request.POST.get("delete"):
+			ls.delete()
 
 		elif request.POST.get("add"):
 			newItem = request.POST.get("new")
@@ -30,8 +32,8 @@ def index(request, id):
 				ls.item_set.create(text=newItem, complete=False)
 			else:
 				print("invalid")
-
-	return render(request, "main/index.html", {"ls": ls})
+	
+	return render(request, "main/index.html", {"ls": ls,"lists": l})
 
 
 def get_name(request):
@@ -47,13 +49,8 @@ def get_name(request):
 
 	else:
 		form = CreateListForm()
-
-	return render(request, "main/create.html", {"form": form})
-
-
-def home(request):
-	return render(request, "main/home.html", {})
-
+	l = ToDoList.objects.all()
+	return render(request, "main/create.html", {"form": form,"lists": l})
 
 def view(request):
 	l = ToDoList.objects.all()

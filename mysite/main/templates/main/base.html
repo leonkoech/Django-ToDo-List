@@ -4,37 +4,108 @@
     <style type="text/css">
       /* The sidebar menu */
       .sidenav {
-        height: 100%; /* Full-height: remove this if you want "auto" height */
-        width: 160px; /* Set the width of the sidebar */
-        position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-        z-index: 1; /* Stay on top */
-        top: 0; /* Stay at the top */
-        left: 0;
-        background-color: #111; /* Black */
-        overflow-x: hidden; /* Disable horizontal scroll */
+        height: 94%; 
+        width: 23%;
+        position: fixed; 
+        z-index: 1; 
+        top: 3%; 
+        text-align: center;
+        left: 2%;
+        background-color: #eeeeee; 
         padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 15px;
+        padding-right:15px;
+        border-radius: 5px;
       }
-
+      .sidenav h3{
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: capitalize;
+      }
+      .sideitem{
+        height:60px;
+        width:100%;
+        line-height: 60px;
+        padding: 0px;
+        margin-bottom: 20px;
+        text-align:center;
+        border-radius: 5px;
+      }
+      .sideitem span{
+        color:white;
+        font-size:18px;
+        line-height: 60px;
+        padding:0
+      }
       /* The navigation menu links */
       .sidenav a {
-        padding: 6px 8px 6px 16px;
         text-decoration: none;
-        font-size: 25px;
-        color: #818181;
+        color: white;
         display: block;
+        padding: 0;
       }
+      .sideitem:hover{
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 
+      }
       /* When you mouse over the navigation links, change their color */
       .sidenav a:hover {
-        color: #f1f1f1;
+        
+        text-decoration: none;
       }
+      .input-g{
+        display: block;
+      }
+      .pdbtn{
+        margin-top: 20px;
+      }
+      .input-gr{
+        display: grid;
+        grid-template-columns: 400px auto;
+        column-gap: 10px;
+      }
+      .input-g input{
+        background-color: #e0e0e0;
+        width:400px;
+        height:40px;
+        outline:none;
+        border:none;
+        border-radius: 0;
+        border-bottom:1px solid #0275d8;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      .smtxt{
+        font-size: 12px;
+        margin-bottom: 20px;
+        font-weight: normal;
+      }
+      .bgbtn{
+        width:200px;
 
+      }
+      .cgbtn{
+        width:200px
+      }
+      .headr{
+        width:100%;
+        height:100px;
+        line-height: 100px;
+        text-align: center;
+        font-weight: bold;
+      }
       /* Style page content */
       .main {
-        margin-left: 160px; /* Same as the width of the sidebar */
-        padding: 0px 10px;
+        margin-left: 25%; /* Same as the width of the sidebar */
+        padding: 0px 0px;
       }
-
+      .pd-l{
+        margin-left: 22%;
+      }
+      .crbtn{
+        width:300px;
+      }
       /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
       @media screen and (max-height: 450px) {
         .sidenav {padding-top: 15px;}
@@ -49,21 +120,29 @@
 <body>
   <!-- Side navigation -->
   <div class="sidenav">
-    <a href="/">Home</a>
-    <a href="/view">View</a>
-    <a href="/create">Create</a>
+    <h3>my lists</h3>
+    <hr class=" col-10 mt-0 mb-10">
+    {% block listitems %}
+    {% endblock %}
+    <div>
+      <a 	class="btn btn-dark sideitem"  href="/create"><span> + </span></a>
+    </div>
+    
   </div>
 
   <!-- Page content -->
   <div class="main">
-    <div class="row justify-content-center">
-      <div class="col-8">
-        <h1 class="mt-2">Tech With Tim</h1>
-        <hr class="mt-0 mb-4">
+    <h1 class="headr">To Do App</h1>
+  
+         <hr class=" col-6 mt-0 mb-4">
+   
+    
+      <div class="col-6 pd-l">
+       
         {% block content %}
         {% endblock %}
       </div>
-    </div>
+    
   </div>
 
   </div>

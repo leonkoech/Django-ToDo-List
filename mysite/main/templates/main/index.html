@@ -2,6 +2,13 @@
 
 {% block title %}View List{% endblock %}
 
+{% block listitems %}
+
+	{% for l in lists %}
+			
+		<a class="btn btn-primary sideitem" href="/{{l.id}}"><span>{{l.name}}</span></a>
+	{% endfor %}
+{% endblock %}
 {% block content %}
 	<h2>{{ls.name}}</h2>
 	<form method="post", action="#">
@@ -11,21 +18,23 @@
 			<div class="input-group mb-3">
 	  			<div class="input-group-prepend">
 	    			<div class="input-group-text">
-	      				<input type="checkbox" name="c{{item.id}}" value="clicked" aria-label="Checkbox for following text input" {% if item.complete %} checked {% endif %}>
-	    			</div>
+						  <input type="checkbox" name="c{{item.id}}" value="clicked" aria-label="Checkbox for following text input" {% if item.complete %} checked {% endif %}>
+						</div>
 	  			</div>
-	  			<input type="text" name="text{{item.id}}" value="{{item.text}}" class="form-control" aria-label="Text input with checkbox">
+				  <input type="text" name="text{{item.id}}" value="{{item.text}}" class="form-control" aria-label="Text input with checkbox">
+				  
 			</div>
 		{% endfor %}
 
-		<div class="input-group mb-3">
-	  		<div class="input-group-prepend">
-	  		<button name="add", value="add", type="submit", class="btn btn-success">Add New</button>
-	  		</div>
-	  		<input type="text" name="new" value="" class="form-control">
-	  		
+		<div class="input-g">
+	  		<div class="input-gr">
+			<input type="text" name="new" value="" class="form-control">
+	  		<button name="add", value="add", type="submit", class="btn btn-primary">Add Item</button>
+	  		</div>	  		
 		</div>
 		<br>
-		<button name="save", value="save", type="submit", class="btn btn-success">Save</button>
+		<strong class="smtxt">You have to save your changes *</strong><br>
+		<button name="save", value="save", type="submit", class="btn btn-success bgbtn">Save list</button>
+		<button name="delete", value="delete", type="submit", class="btn btn-danger cgbtn",href="/home">delete list</button>
 	</form>
 {% endblock %}
