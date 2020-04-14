@@ -1,5 +1,5 @@
 # Django To-Do List
-![django:3.0.5](https://img.shields.io/badge/django-3.0.5-green)
+![django:2.2](https://img.shields.io/badge/django-2.2-green)
 ![python:3.7.3](https://img.shields.io/badge/python-3.7.3-blue)
 ![django-crispy-forms:1.9.0](https://img.shields.io/badge/django--crispy--forms-1.9.0-orange)
 
